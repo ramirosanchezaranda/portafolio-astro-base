@@ -4,7 +4,7 @@ layout: '../layouts/BaseLayout.astro'
 <section class="profile-card">
   <div class="left-panel">
     <div class="profile-picture">
-      <img src="/path-to-image/profile-background.jpg" alt="Background" class="background" />
+      <img src="/icons/profile-background.jpg" alt="Background" class="background" />
     </div>
     <h1>Hannah Elmore</h1>
     <p>Copywriter</p>
@@ -12,7 +12,7 @@ layout: '../layouts/BaseLayout.astro'
     <div class="social-icons">
       <a href="#"><img src="/icons/mail.svg" alt="Email"></a>
       <a href="#"><img src="/icons/instagram.svg" alt="Instagram"></a>
-      <a href="#"><img src="/icons/x.svg" alt="X"></a>
+      <a href="#"><img src="/icons/x.png" alt="X"></a>
       <a href="#"><img src="/icons/facebook.svg" alt="Facebook"></a>
       <a href="#"><img src="/icons/linkedin.svg" alt="LinkedIn"></a>
     </div>
@@ -57,9 +57,10 @@ layout: '../layouts/BaseLayout.astro'
 }
 
 .profile-picture .background {
-  width: 100%;
+  width: 50%;
   height: auto;
   border-radius: 10px;
+  contain: autofit;
 }
 
 h1 {
@@ -84,7 +85,7 @@ p {
 .social-icons a img {
     width: 24px; /* Ajusta el tamaño de los íconos */
     height: 24px; /* Puedes cambiar este valor si necesitas otro tamaño */
-     /* Mantiene las proporciones del icono */
+
   }
 
 .right-panel {
