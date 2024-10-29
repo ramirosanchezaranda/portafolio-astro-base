@@ -3,8 +3,9 @@ layout: '../layouts/BaseLayout.astro'
 ---
 <section class="profile-card">
   <div class="left-panel">
+    <img src="/icons/background.jpg" alt="Background" class="background" />
     <div class="profile-picture">
-      <img src="/icons/profile-background.jpg" alt="Background" class="background" />
+      <img src="/icons/profile-background.jpg" alt="Profile" class="profile" />
     </div>
     <h1>Hannah Elmore</h1>
     <p>Copywriter</p>
@@ -56,13 +57,16 @@ layout: '../layouts/BaseLayout.astro'
   padding: 20px;
 }
 
-.profile-picture .background {
+.profile-picture .profile {
   width: 50%;
   height: auto;
   border-radius: 10px;
   contain: autofit;
 }
 
+.profile-card .background {
+  contain: autofit;
+}
 h1 {
   font-size: 2rem;
   margin-top: 15px;
