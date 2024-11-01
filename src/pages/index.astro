@@ -1,11 +1,12 @@
 ---
 layout: '../layouts/BaseLayout.astro'
 ---
+
 <section class="profile-card">
   <div class="left-panel">
-    <img src="/icons/background.jpg" alt="Background" class="background" />
     <div class="profile-picture">
       <img src="/icons/profile-background.jpg" alt="Profile" class="profile" />
+      <img src="/background.jpg" alt="Background" class="background" />
     </div>
     <h1>Hannah Elmore</h1>
     <p>Copywriter</p>
@@ -42,7 +43,25 @@ layout: '../layouts/BaseLayout.astro'
   </div>
 </section>
 
+<!-- Botón para cambiar el modo oscuro -->
+<button id="toggle-dark-mode" class="toggle-mode-btn">Modo Oscuro</button>
+
+<!-- Código JavaScript para el botón -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleButton = document.getElementById("toggle-dark-mode");
+
+    if (toggleButton) {
+      toggleButton.addEventListener("click", function() {
+        document.body.classList.toggle("dark-mode");
+        this.textContent = document.body.classList.contains("dark-mode") ? "Modo Claro" : "Modo Oscuro";
+      });
+    }
+  });
+</script>
+
 <style>
+/* Estilos básicos */
 .profile-card {
   display: flex;
   justify-content: space-between;
@@ -56,65 +75,45 @@ layout: '../layouts/BaseLayout.astro'
   background-color: #fff;
   padding: 20px;
 }
-
-.profile-picture .profile {
-  width: 50%;
+.profile-picture {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120%;
+  height: 100%;
+  border-radius: 10px;
+  z-index: 1;
+  opacity: 0.6;
+}
+.profile {
+  position: relative;
+  width: 80%;
   height: auto;
   border-radius: 10px;
-  contain: autofit;
+  z-index: 2;
 }
 
-.profile-card .background {
-  contain: autofit;
-}
-h1 {
-  font-size: 2rem;
-  margin-top: 15px;
-  font-weight: bold;
-}
-
-p {
-  font-size: 1rem;
-  color: #333;
-}
-
-.social-icons {
-  margin-top: 20px;
-}
-
-.social-icons a {
-  margin: 0 10px;
-  display: inline-block;
-}
-.social-icons a img {
-    width: 24px; /* Ajusta el tamaño de los íconos */
-    height: 24px; /* Puedes cambiar este valor si necesitas otro tamaño */
-
-  }
+h1 { font-size: 2rem; margin-top: 15px; font-weight: bold; }
+p { font-size: 1rem; color: #333; }
+.social-icons { margin-top: 20px; }
+.social-icons a { margin: 0 10px; display: inline-block; }
+.social-icons a img { width: 24px; height: 24px; }
 
 .right-panel {
   width: 55%;
   padding: 20px;
   background-color: #dcf9b0;
 }
-
-.about-me h2 {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.about-me p {
-  margin-top: 15px;
-}
-
-.education, .experience {
-  margin-top: 20px;
-}
-
-h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
+.about-me h2 { font-size: 2rem; font-weight: bold; }
+.about-me p { margin-top: 15px; }
+.education, .experience { margin-top: 20px; }
+h3 { font-size: 1.5rem; margin-bottom: 10px; }
 
 .resume-btn {
   margin-top: 20px;
@@ -125,9 +124,35 @@ h3 {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 .resume-btn:hover {
   background-color: #000;
   color: #fff;
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+  background-color: #333;
+  color: #f2ffe0;
+}
+
+body.dark-mode .left-panel {
+  background-color: #444;
+  color: #f2ffe0;
+}
+
+body.dark-mode .right-panel {
+  background-color: #555;
+  color: #f2ffe0;
+}
+
+body.dark-mode .resume-btn {
+  background-color: #555;
+  color: #f2ffe0;
+  border-color: #f2ffe0;
+}
+
+body.dark-mode .resume-btn:hover {
+  background-color: #f2ffe0;
+  color: #333;
 }
 </style>
