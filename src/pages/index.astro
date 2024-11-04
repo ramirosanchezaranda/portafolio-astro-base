@@ -3,20 +3,20 @@ layout: '../layouts/BaseLayout.astro'
 ---
 
 <section class="profile-card">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;700&display=swap" rel="stylesheet">
   <div class="left-panel">
     <div class="profile-picture">
       <img src="/icons/profile-background.jpg" alt="Profile" class="profile" />
-      <img src="/background.jpg" alt="Background" class="background" />
     </div>
     <h1>Hannah Elmore</h1>
     <p>Copywriter</p>
     <p>she/her</p>
     <div class="social-icons">
-      <a href="#"><img src="/icons/mail.svg" alt="Email"></a>
-      <a href="#"><img src="/icons/instagram.svg" alt="Instagram"></a>
-      <a href="#"><img src="/icons/x.png" alt="X"></a>
-      <a href="#"><img src="/icons/facebook.svg" alt="Facebook"></a>
-      <a href="#"><img src="/icons/linkedin.svg" alt="LinkedIn"></a>
+      <a href="#" aria-label="Email"><img src="/icons/mail.svg" alt="Email"></a>
+      <a href="#" aria-label="Instagram"><img src="/icons/instagram.svg" alt="Instagram"></a>
+      <a href="#" aria-label="X (Twitter)"><img src="/icons/x.png" alt="X (Twitter)"></a>
+      <a href="#" aria-label="Facebook"><img src="/icons/facebook.svg" alt="Facebook"></a>
+      <a href="#" aria-label="LinkedIn"><img src="/icons/linkedin.svg" alt="LinkedIn"></a>
     </div>
   </div>
   
@@ -39,14 +39,12 @@ layout: '../layouts/BaseLayout.astro'
       <p>Strateggea Branding</p>
     </section>
 
-    <button class="resume-btn">Resume</button>
+    <button class="resume-btn" aria-label="View Resume">Resume</button>
   </div>
 </section>
 
-<!-- Botón para cambiar el modo oscuro -->
-<button id="toggle-dark-mode" class="toggle-mode-btn">Modo Oscuro</button>
+<button id="toggle-dark-mode" class="toggle-mode-btn" aria-label="Switch to dark mode">Modo Oscuro</button>
 
-<!-- Código JavaScript para el botón -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const toggleButton = document.getElementById("toggle-dark-mode");
@@ -55,26 +53,56 @@ layout: '../layouts/BaseLayout.astro'
       toggleButton.addEventListener("click", function() {
         document.body.classList.toggle("dark-mode");
         this.textContent = document.body.classList.contains("dark-mode") ? "Modo Claro" : "Modo Oscuro";
+        this.setAttribute("aria-label", document.body.classList.contains("dark-mode") ? "Switch to light mode" : "Switch to dark mode");
       });
     }
+
+
+    // Aplicar una transición suave al cambiar el modo oscuro
+    const body = document.body;
+    body.style.transition = "background-color 2.9s ease, color 2.9s ease";
   });
 </script>
 
 <style>
-/* Estilos básicos */
+/* Fuente Apple y estilos generales */
+body {
+  margin: 0;
+  font-family: 'Instrument Sans', sans-serif;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
 .profile-card {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  background-color: #f2ffe0;
+  background-color: #f9ffeb;
+  border-radius: 15px;
+}
+
+@media (min-width: 768px) {
+  .profile-card {
+    flex-direction: row;
+  }
 }
 
 .left-panel {
-  width: 40%;
+  width: 100%;
   text-align: center;
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 20px;
+  box-sizing: border-box;
+  border-radius: 15px;
 }
+
+@media (min-width: 768px) {
+  .left-panel {
+    width: 40%;
+  }
+}
+
 .profile-picture {
   position: relative;
   width: 100%;
@@ -99,60 +127,159 @@ layout: '../layouts/BaseLayout.astro'
   z-index: 2;
 }
 
-h1 { font-size: 2rem; margin-top: 15px; font-weight: bold; }
-p { font-size: 1rem; color: #333; }
-.social-icons { margin-top: 20px; }
-.social-icons a { margin: 0 10px; display: inline-block; }
-.social-icons a img { width: 24px; height: 24px; }
+h1 {
+  font-size: 1.8rem;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #2b2b2b;
+}
+p {
+  font-size: 1rem;
+  color: #333;
+}
+.social-icons {
+  margin-top: 20px;
+}
+.social-icons a {
+  margin: 0 10px;
+  display: inline-block;
+}
+.social-icons a img {
+  width: 24px;
+  height: 24px;
+}
 
 .right-panel {
-  width: 55%;
+  width: 100%;
   padding: 20px;
-  background-color: #dcf9b0;
+  background-color: #e3f4d7;
+  box-sizing: border-box;
+  margin-top: 20px;
+  border-radius: 15px;
 }
-.about-me h2 { font-size: 2rem; font-weight: bold; }
-.about-me p { margin-top: 15px; }
-.education, .experience { margin-top: 20px; }
-h3 { font-size: 1.5rem; margin-bottom: 10px; }
+
+@media (min-width: 768px) {
+  .right-panel {
+    width: 55%;
+    margin-top: 0;
+  }
+}
+
+.about-me h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.about-me p {
+  margin-top: 15px;
+}
+.education, .experience {
+  margin-top: 20px;
+}
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
 
 .resume-btn {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 1rem;
-  border: 2px solid #000;
-  background-color: #fff;
+  border: 2px solid #333;
+  background-color: #ffffff;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 .resume-btn:hover {
-  background-color: #000;
+  background-color: #333;
   color: #fff;
 }
 
-/* Estilos para el modo oscuro */
+/* Modo oscuro */
 body.dark-mode {
+  background-color: #1e1e1e;
+  color: #e2dada;
+}
+
+body.dark-mode .profile-card p{
+  background-color: #2b2b2b;
+  color:#e2dada
+}
+body.dark-mode .profile-card {
+  background-color: #2b2b2b;
+}
+body.dark-mode .profile-card p {
   background-color: #333;
-  color: #f2ffe0;
 }
 
 body.dark-mode .left-panel {
-  background-color: #444;
-  color: #f2ffe0;
+  background-color: #333;
+  color: #e0e0e0;
 }
 
 body.dark-mode .right-panel {
-  background-color: #555;
-  color: #f2ffe0;
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
+  color: #f5f5f5;
+}
+
+body.dark-mode .about-me p,
+body.dark-mode .education p,
+body.dark-mode .experience p {
+  color: #e2dada;
+}
+
+body.dark-mode .social-icons a img {
+  filter: invert(1);
 }
 
 body.dark-mode .resume-btn {
   background-color: #555;
-  color: #f2ffe0;
-  border-color: #f2ffe0;
+  color: #e0e0e0;
+  border-color: #e0e0e0;
 }
 
 body.dark-mode .resume-btn:hover {
-  background-color: #f2ffe0;
-  color: #333;
+  background-color: #e0e0e0;
+  color: #1e1e1e;
 }
+
+/* Botón de cambio de modo oscuro */
+.toggle-mode-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #f0f0f0;
+  border: 2px solid #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-mode-btn:hover {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 1.5rem; }
+  .about-me h2, h3 { font-size: 1.3rem; }
+  .resume-btn { padding: 8px 16px; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+  .profile-picture { max-width: 200px; }
+  .social-icons a img { width: 20px; height: 20px; }
+  p, .about-me p { font-size: 0.9rem; }
+}
+
+/* Redondear los botones */
+.resume-btn, .toggle-mode-btn {
+  border-radius: 20px; /* Ajusta el valor según lo redondeado que deseas */
+}
+
 </style>
