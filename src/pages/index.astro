@@ -6,7 +6,6 @@ layout: '../layouts/BaseLayout.astro'
   <div class="left-panel">
     <div class="profile-picture">
       <img src="/icons/profile-background.jpg" alt="Profile" class="profile" />
-      <img src="/background.jpg" alt="Background" class="background" />
     </div>
     <h1>Hannah Elmore</h1>
     <p>Copywriter</p>
@@ -81,16 +80,6 @@ layout: '../layouts/BaseLayout.astro'
   max-width: 300px;
   margin: 0 auto;
 }
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 120%;
-  height: 100%;
-  border-radius: 10px;
-  z-index: 1;
-  opacity: 0.6;
-}
 .profile {
   position: relative;
   width: 80%;
@@ -155,4 +144,12 @@ body.dark-mode .resume-btn:hover {
   background-color: #f2ffe0;
   color: #333;
 }
+
+body.dark-mode h1 { font-size: 2rem; margin-top: 15px; font-weight: bold; }
+body.dark-mode p { font-size: 1rem; color: #ffff; }
+
+body.dark-mode .about-me h2 { font-size: 2rem; font-weight: bold; color: #ffff; }
+body.dark-mode .about-me p { margin-top: 15px; }
+body.dark-mode .education, .experience { margin-top: 20px; }
+body.dark-mode h3 { font-size: 1.5rem; margin-bottom: 10px; color: #ffff; }
 </style>
