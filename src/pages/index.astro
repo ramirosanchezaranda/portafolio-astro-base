@@ -13,6 +13,7 @@ layout: '../layouts/BaseLayout.astro'
     <p>she/her</p>
     <div class="social-icons">
       <a href="#" aria-label="Email"><img src="/icons/mail.svg" alt="Email"></a>
+      <a href="#" aria-label="Whatsapp"><img src="/icons/whatsapp.svg" alt="Whatsapp"></a>
       <a href="#" aria-label="Instagram"><img src="/icons/instagram.svg" alt="Instagram"></a>
       <a href="#" aria-label="X (Twitter)"><img src="/icons/x.png" alt="X (Twitter)"></a>
       <a href="#" aria-label="Facebook"><img src="/icons/facebook.svg" alt="Facebook"></a>
@@ -45,6 +46,8 @@ layout: '../layouts/BaseLayout.astro'
 
 
 <button id="toggle-dark-mode" class="toggle-mode-btn" aria-label="Switch to dark mode">Modo Oscuro</button>
+
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const toggleButton = document.getElementById("toggle-dark-mode");
@@ -56,7 +59,7 @@ layout: '../layouts/BaseLayout.astro'
         this.setAttribute("aria-label", document.body.classList.contains("dark-mode") ? "Switch to light mode" : "Switch to dark mode");
       });
     }
-    
+  //script cambio del lenguaje
 
     // Aplicar una transición suave al cambiar el modo oscuro
     const body = document.body;
